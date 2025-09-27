@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search for charity events</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+ <nav>
+  <a href="index.html">Homepage</a>  
+  <a href="search.html">Search Activity</a>  
+ </nav>
+ <main class="container">
+  <h1>Search for charitable activities</h1>
+  <form id="search-form">
+   <label for="date">Date:</label>
+   <input type="date" id="date" name="date"><br>
+   <label for="location">Location:</label>
+   <input type="text" id="location" name="location" placeholder="Example: Beijing"><br>
+   <label for="category">Category:</label>
+   <select id="category" name="category">
+     <option value="">All categories</option>
+     <option value="education">Education</option>
+     <option value="environment">Environment</option>
+   </select><br>
+   <button type="submit">Search</button>
+   <button type="button" id="clear-btn">Clear</button>  
+  </form>
+  <div id="search-results" class="event-list"></div>
+  <div id="error" style="color: red;"></div>
+</main>
+<script src="js/search.js"></script>
+</body>
+</html>
