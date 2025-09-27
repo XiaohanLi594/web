@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home Page</a>
+    <a href="search.html">Search Activity</a>
+  </nav>
+  <main class="container">
+    <div id="event-detail">
+      <h1 id="event-title"></h1>
+      <p><strong>Date：</strong><span id="event-date"></span></p>
+      <p><strong>Iocation：</strong><span id="event-location"></span></p>
+      <p><strong>Fare：</strong>¥<span id="ticket-price"></span></p>
+      <p><strong>Sponsor：</strong><span id="org-name"></span></p>
+      <p><strong>Mission of the organizer:</strong><span id="org-mission"></span></p>
+      <p><strong>Contact Information:</strong><span id="org-contact"></span></p>
+      <h3>Fundraising Progress</h3>
+      <div class="progress-bar">
+        <div id="progress-bar" class="progress"></div>
+      </div>
+      <p id="progress-text"></p>
+      <button id="register-btn">Sign up now</button>
+    </div>
+    <div id="error" style="color: red;"></div>
+  </main>
+  <script src="js/event.js"></script>
+</body>
+</html>
