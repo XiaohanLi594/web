@@ -1,34 +1,203 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Details</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Event Detail</title>
+  <style>
+    :root 
+    {
+      --primary: #2ecc71;
+      --primary-dark: #27ae60;
+      --secondary: #3498db; /* 辅助色：按钮 */
+      --light-bg: #f9f9f9;
+      --text: #333;
+      --border: #ddd;
+      --danger: #e74c3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+
+    .container 
+    {
+      max-width: 800px; 
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    nav 
+    {
+      background: var(--primary-dark);
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav .container 
+    {
+      display: flex;
+    }
+
+    nav a 
+    {
+      color: white;
+      text-decoration: none;
+      margin-right: 2rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover 
+    {
+      color: #f0f0f0;
+    }
+
+    .event-detail 
+    {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .event-title 
+    {
+      color: var(--text);
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-grid 
+    {
+      display: grid;
+      grid-template-columns: 120px 1fr; /* 标签固定宽度，内容自适应 */
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-label 
+    {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .detail-value 
+    {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .progress-section 
+    {
+      margin: 2rem 0;
+    }
+
+    .progress-section h3 
+    {
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .progress-bar 
+    {
+      width: 100%;
+      height: 12px;
+      background: #f1f1f1;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill 
+    {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark)); /* 简单渐变，不简陋 */
+      border-radius: 6px;
+      transition: width 0.5s;
+    }
+
+    .progress-text 
+    {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .register-btn 
+    {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .register-btn:hover 
+    {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    #error 
+    {
+      color: var(--danger);
+      background: rgba(231, 76, 60, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home Page</a>
-    <a href="search.html">Search Activity</a>
-  </nav>
-  <main class="container">
-    <div id="event-detail">
-      <h1 id="event-title"></h1>
-      <p><strong>Date：</strong><span id="event-date"></span></p>
-      <p><strong>Location：</strong><span id="event-location"></span></p>
-      <p><strong>Fare：</strong>¥<span id="ticket-price"></span></p>
-      <p><strong>Sponsor：</strong><span id="org-name"></span></p>
-      <p><strong>Mission of the organizer:</strong><span id="org-mission"></span></p>
-      <p><strong>Contact Information:</strong><span id="org-contact"></span></p>
-      <h3>Fundraising Progress</h3>
-      <div class="progress-bar">
-        <div id="progress-bar" class="progress"></div>
-      </div>
-      <p id="progress-text"></p>
-      <button id="register-btn">Sign up now</button>
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="search.html">Search</a>
     </div>
-    <div id="error" style="color: red;"></div>
-  </main>
+  </nav>
+
+  <div class="container">
+    <div class="event-detail">
+      <h1 id="event-title" class="event-title"></h1>
+      <div class="detail-grid">
+        <div class="detail-label">Date:</div>
+        <div id="event-date" class="detail-value"></div>
+        <div class="detail-label">Location:</div>
+        <div id="event-location" class="detail-value"></div>
+        <div class="detail-label">Fare:</div>
+        <div class="detail-value">¥<span id="ticket-price"></span></div>
+        <div class="detail-label">Sponsor:</div>
+        <div id="org-name" class="detail-value"></div>
+        <div class="detail-label">Contact:</div>
+        <div id="org-contact" class="detail-value"></div>
+      </div>
+
+      <div class="progress-section">
+        <h3>Fundraising Progress</h3>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="progress-text" class="progress-text"></p>
+      </div>
+
+      <button id="register-btn" class="register-btn">Sign up now</button>
+    </div>
+
+    <div id="error"></div>
+  </div>
+
   <script src="js/event.js"></script>
 </body>
 </html>
