@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <h3>${event.event_name}</h3>
             <p><strong>Category：</strong>${event.category_name}</p>
             <p><strong>Date：</strong>${new Date(event.event_date).toLocaleDateString()}</p>
-            <p><strong>Iocation：</strong>${event.location}</p>
+            <p><strong>Location：</strong>${event.location}</p>
             <div class="progress-bar">
               <div class="progress" style="width: ${progressPercent}%"></div>
             </div>
