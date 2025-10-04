@@ -1,155 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Charity Events</title>
-  <style>
-    :root {
-      --primary: #2ecc71; 
-      --primary-dark: #27ae60; 
-      --light-bg: #f9f9f9; 
-      --text: #333; 
-      --border: #ddd; 
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
-    }
-
-    .container 
-    {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    nav 
-    {
-      background: var(--primary-dark);
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav .container 
-    {
-      display: flex;
-    }
-
-    nav a 
-    {
-      color: white;
-      text-decoration: none;
-      margin-right: 2rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover 
-    {
-      color: #f0f0f0;
-    }
-
-    .static 
-    {
-      margin: 2rem 0;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .static h2 
-    {
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .static p 
-    {
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 
-    {
-      color: var(--text);
-      margin: 1rem 0;
-      font-size: 1.4rem;
-    }
-
-    .event-list 
-    {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 1rem 0 2rem;
-    }
-
-    .event-card 
-    {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-    }
-
-    .event-card:hover 
-    {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    }
-
-    .event-card h3 
-    {
-      color: var(--primary-dark);
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-    }
-
-    .event-card p 
-    {
-      color: var(--text);
-      margin: 0.4rem 0;
-      font-size: 0.95rem;
-    }
-
-    #error 
-    {
-      color: #e74c3c;
-      background: rgba(231, 76, 60, 0.1);
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-  </style>
+  <title>Charity Event Hub</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav>
-    <div class="container">
-      <a href="index.html">Home</a>
-      <a href="search.html">Search</a>
-    </div>
-  </nav>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Events</a></li>
+      </ul>
+    </nav>
+    <h1>Charity Event Hub</h1>
+  </header>
 
-  <div class="container">
-    <div class="static">
-      <h2>Welcome to Charity Event Platform</h2>
-      <p>Our mission: Connect charitable organizations with caring people, raising funds and awareness for meaningful causes.</p>
-      <p>Contact Us: charity@example.com | Phone: 123-4567-8910</p>
-    </div>
+  <main>
+    <section class="intro">
+      <h2>Welcome to Our Charity Event Platform</h2>
+      <p>Connect with meaningful events to support noble causes.</p>
+      <p>Contact: charity@example.com | +1 (555) 123-4567</p>
+    </section>
 
-    <h1>Upcoming Charity Events</h1>
-    <div id="event-list" class="event-list"></div>
-    <div id="error"></div>
-  </div>
+    <section class="upcoming-events">
+      <h2>Upcoming Events</h2>
+      <div id="homeEvents" class="event-list">
+        <p>Loading events...</p>
+      </div>
+      <div id="homeError" class="error" style="display: none;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Charity Event Hub</p>
+  </footer>
 
   <script src="js/home.js"></script>
 </body>

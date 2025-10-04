@@ -1,243 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search - Charity Events</title>
-  <style>
-    :root 
-    {
-      --primary: #2ecc71;
-      --primary-dark: #27ae60;
-      --light-bg: #f9f9f9;
-      --text: #333;
-      --border: #ddd;
-      --danger: #e74c3c;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
-    }
-
-    .container 
-    {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    nav 
-    {
-      background: var(--primary-dark);
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav .container 
-    {
-      display: flex;
-    }
-
-    nav a 
-    {
-      color: white;
-      text-decoration: none;
-      margin-right: 2rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover 
-    {
-      color: #f0f0f0;
-    }
-
-    h1 
-    {
-      color: var(--text);
-      margin: 2rem 0 1rem;
-      font-size: 1.4rem;
-    }
-
-    .search-form 
-    {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-
-    .form-group 
-    {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label 
-    {
-      display: block;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group select 
-    {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 1rem;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus 
-    {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .btn-group 
-    {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .btn-submit 
-    {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-submit:hover 
-    {
-      background: var(--primary-dark);
-    }
-
-    .btn-clear 
-    {
-      background: #f1f1f1;
-      color: var(--text);
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-clear:hover 
-    {
-      background: #e0e0e0;
-    }
-
-    #search-results 
-    {
-      margin: 1rem 0 2rem;
-    }
-
-    .event-card 
-    {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      cursor: pointer;
-      margin-bottom: 1rem;
-      transition: box-shadow 0.2s;
-    }
-
-    .event-card:hover 
-    {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    }
-
-    .event-card h3 
-    {
-      color: var(--primary-dark);
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-    }
-
-    .event-card p 
-    {
-      color: var(--text);
-      margin: 0.4rem 0;
-      font-size: 0.95rem;
-    }
-
-    .empty-result 
-    {
-      text-align: center;
-      padding: 2rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      color: #777;
-    }
-
-    #error 
-    {
-      color: var(--danger);
-      background: rgba(231, 76, 60, 0.1);
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-  </style>
+  <title>Search Events</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav>
-    <div class="container">
-      <a href="index.html">Home</a>
-      <a href="search.html">Search</a>
-    </div>
-  </nav>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Events</a></li>
+      </ul>
+    </nav>
+    <h1>Search Events</h1>
+  </header>
 
-  <div class="container">
-    <h1>Search Charity Events</h1>
-    <form id="search-form" class="search-form">
-      <div class="form-group">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
-      </div>
+  <main>
+    <section class="search-filters">
+      <form id="searchForm">
+        <div class="form-group">
+          <label for="eventDate">Event Date:</label>
+          <input type="date" id="eventDate" name="eventDate">
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select id="location" name="location">
+            <option value="">All Locations</option>
+            <option value="1">Liuzhou</option>
+            <option value="2">Guangxi</option>
+            <option value="3">Nanning</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category">
+            <option value="">All Categories</option>
+            <option value="1">Marathon</option>
+            <option value="2">Gala</option>
+            <option value="3">Auction</option>
+            <option value="4">Concert</option>
+          </select>
+        </div>
+        <button type="button" id="clearFilters">Clear Filters</button>
+        <button type="submit">Search Events</button>
+      </form>
+    </section>
 
-      <div class="form-group">
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" placeholder="e.g., City Hall">
+    <section class="search-results">
+      <h2>Search Results</h2>
+      <div id="searchResults" class="event-list">
+        <p>Select filters and search</p>
       </div>
+      <div id="searchError" class="error" style="display: none;"></div>
+    </section>
+  </main>
 
-      <div class="form-group">
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-          <option value="">All Categories</option>
-          <option value="1">Fun Run</option>
-          <option value="2">Gala Dinner</option>
-        </select>
-      </div>
+  <footer>
+    <p>&copy; 2025 Charity Event Hub</p>
+  </footer>
 
-      <div class="btn-group">
-        <button type="submit" class="btn-submit">Search</button>
-        <button type="button" id="clear-btn" class="btn-clear">Clear Filters</button> 
-      </div>
-    </form>
-    <div id="search-results"></div>
-    <div id="error"></div>
-  </div>
   <script src="js/search.js"></script>
 </body>
 </html>
