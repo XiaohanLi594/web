@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+  <title>Charity Event Hub</title> 
+  <link rel="stylesheet" href="./css/styles.css"> <!-- Link to external CSS stylesheet -->
+</head>
+<body>
+  <!-- Header section with navigation and main title -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li> 
+        <li><a href="html/search.html">Search Events</a></li> 
+      </ul>
+    </nav>
+    <h1>Charity Event Hub</h1>
+  </header>
+  <main>
+    <!-- Introduction section with welcome message -->
+    <section class="intro">
+      <h2>Welcome to Our Charity Event Platform</h2> 
+      <p>Connect with meaningful events to support noble causes.</p> 
+      <p>Contact: charity@example.com | +1 (555) 123-4567</p>
+    </section>
+    <!-- Section for upcoming events -->
+    <section class="upcoming-events">
+      <h2>Upcoming Events</h2> 
+      <div id="homeEvents">Loading events...</div> 
+      <div id="homeError" class="error" style="display: none;"></div> 
+    </section>
+  </main>
+  <!-- Footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 Charity Event Hub</p> <!-- Copyright statement -->
+  </footer>
+
+  <script src="./js/home.js" defer></script>
+</body>
+</html>

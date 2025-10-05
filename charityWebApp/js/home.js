@@ -1,54 +1,48 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const eventsContainer = document.getElementById('homeEvents');
-  const errorContainer = document.getElementById('homeError');
-
-  eventsContainer.innerHTML = 'Loading upcoming events...';
-  errorContainer.style.display = 'none';
-
-  try {
+  // Get references to DOM elements
+  const eventsContainer = document.getElementById('homeEvents'); 
+  const errorContainer = document.getElementById('homeError'); 
+  try 
+  {
+    // Fetch event data from the API for the homepage
     const response = await fetch('/api/events/home');
-    
-    if (!response.ok) {
-      throw new Error(`Failed to load events (Status: ${response.status})`);
-    }
-
-    const events = await response.json();
-
-    if (events.length === 0) {
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+    const { data: events } = await response.json();
+    // If no events are found, display a message
+    if (events.length === 0) 
+      {
       eventsContainer.innerHTML = '<p>No upcoming events found.</p>';
       return;
     }
-
-    eventsContainer.innerHTML = events.map(event => `
-      <div class="event-card">
-        ${event.ImageURL ? `
-          <img 
-            src="./images/${event.ImageURL}"  
-            alt="Image for ${event.EventName}" 
-            class="event-img"
-          >` : ''}
-        <div class="event-info">
-          <h3>${event.EventName}</h3>
-          <div class="event-meta">
-            <span>Category: ${event.CategoryName}</span>
-            <span>Location: ${event.LocationName}</span>
-            <span>Date: ${formatDate(event.EventDate)}</span> 
+    eventsContainer.innerHTML = `
+      <div class="event-container">
+        ${events.map(event => `
+          <div class="event-card">
+            ${event.ImageURL ? `
+              <img 
+                src="./images/${event.ImageURL}" 
+                alt="${event.EventName}" 
+                class="event-img"
+              >` : ''}
+            <div class="event-info">
+              <h3>${event.EventName}</h3>
+              <div class="event-meta">
+                <span>Category: ${event.CategoryName}</span>
+                <span>Location: ${event.LocationName}</span>
+                <span>Date: ${new Date(event.EventDate).toLocaleDateString()}</span>
+              </div>
+              <a href="html/detail.html?id=${event.EventID}" class="detail-btn">View Details</a>
+            </div>
           </div>
-          <a href="detail.html?id=${event.EventID}">View Details</a>
-        </div>
+        `).join('')}
       </div>
-    `).join('');
-
-  } catch (error) {
-    errorContainer.textContent = `Error: ${error.message}`;
+    `;
+  } 
+  catch (error) 
+  {
+    // Display error message if something fails
+    errorContainer.textContent = error.message;
     errorContainer.style.display = 'block';
-    eventsContainer.innerHTML = '';
+    eventsContainer.innerHTML = ''; 
   }
 });
-
-function formatDate(dateStr) {
-  if (!dateStr) return 'No date';
-  const date = new Date(dateStr);
-  return isNaN(date.getTime()) ? 'Invalid date' : date.toLocaleDateString();
-}
-    

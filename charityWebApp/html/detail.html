@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport -->
+  <title>Event Detail</title> 
+  <link rel="stylesheet" href="../css/styles.css"> <!-- External stylesheet -->
+</head>
+<body>
+  <!-- Header with navigation and title -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="search.html">Search Events</a></li> 
+      </ul>
+    </nav>
+    <h1>Event Detail</h1> <!-- Page heading -->
+  </header>
+  <!-- Main content area -->
+  <main>
+    <div id="detailContent">Loading event details...</div> 
+    <div id="detailError" class="error" style="display: none;"></div> 
+    <button id="registerBtn" style="display: none;">Register</button> 
+    <!-- Registration modal (hidden) -->
+    <div id="registerModal" style="display: none;">
+      <div class="modal-content">
+        <span id="modalClose">&times;</span> 
+        <p>Registration functionality coming soon!</p> 
+      </div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Charity Event Hub</p> 
+  </footer>
+  <script src="../js/detail.js" defer></script> 
+</body>
+</html>
